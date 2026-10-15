@@ -21,6 +21,9 @@ class SNat(BaseModule):
     API_KEY_PATH = 'rule'
     API_MOD = 'firewall'
     API_CONT = 'source_nat'
+    # the source_nat 'get' endpoint only returns 'general' settings since OPNsense 26.x
+    # the shared 'filter' model still exposes the full 'snatrules' rule-set
+    API_CONT_GET = 'filter'
     FIELDS_CHANGE = [
         'sequence', 'no_nat', 'interface', 'target', 'target_port', 'description',
         'ip_protocol', 'protocol', 'source_invert', 'source_net', 'source_port',
